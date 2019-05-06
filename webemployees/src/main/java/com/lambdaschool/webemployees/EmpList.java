@@ -9,7 +9,7 @@ public class EmpList
     public EmpList()
     {
         empList.add(new Employee("Steve", "Green", 45000, true, 1, 1));
-        empList.add(new Employee("May", "Ford", 80000, true, 1, 1));
+        empList.add(new Employee("Sam", "Ford", 80000, true, 1, 1));
         empList.add(new Employee("John", "Jones ", 75000, true, 1, 1));
     }
 
@@ -23,5 +23,20 @@ public class EmpList
             }
         }
         return null;
+    }
+
+    public ArrayList<Employee> findEmployees(CheckEmployee tester)
+    {
+        ArrayList<Employee> tempEmpList = new ArrayList<>();
+
+        for (Employee e: empList)
+        {
+            if (tester.test(e))
+            {
+                tempEmpList.add(e);
+            }
+        }
+
+        return tempEmpList;
     }
 }

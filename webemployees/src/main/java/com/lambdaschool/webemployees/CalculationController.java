@@ -2,21 +2,21 @@ package com.lambdaschool.webemployees;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-// localhost:8080/calc/salary?id=1&raise=0.5
+// localhost:8080/calc/salary/1/0.5
 @RestController
 @RequestMapping("/calc")
 public class CalculationController
 {
-    @RequestMapping(value = "/salary",
+    @RequestMapping(value = "/salary/{id}/{raise}",
                     produces = {"application/json"})
     public ResponseEntity<?> checkRaise(
-            @RequestParam(value = "id")
+            @PathVariable
                     long id,
-            @RequestParam(value = "raise")
+            @PathVariable
                     double raise)
     {
 
