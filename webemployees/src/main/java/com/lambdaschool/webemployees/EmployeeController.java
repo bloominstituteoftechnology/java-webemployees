@@ -23,7 +23,6 @@ public class EmployeeController
     }
 
 
-    // the restful way
     // localhost:8080/data/employee/2
     @GetMapping(value = "/employee/{id}",
                 produces = {"application/json"})
