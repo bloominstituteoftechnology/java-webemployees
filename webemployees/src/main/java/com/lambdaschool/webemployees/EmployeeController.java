@@ -56,7 +56,7 @@ public class EmployeeController
         ArrayList<Employee> rtnEmps = WebemployeesApplication.ourEmpList.
                 findEmployees(e -> e.getFname().toUpperCase().charAt(0) == Character.toUpperCase(letter));
         rtnEmps.sort((e1, e2) -> ((int) (e1.getSalary() - e2.getSalary())));
-        return new ResponseEntity<>(rtnEmps, HttpStatus.OK);
+        return new ResponseEntity<>(rtnEmps.get(0), HttpStatus.OK);
     }
 
 
