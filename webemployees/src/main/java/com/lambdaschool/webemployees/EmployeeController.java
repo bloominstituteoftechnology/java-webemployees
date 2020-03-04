@@ -9,11 +9,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
+/**
+ * The entry point for clients to access employee data.
+ */
 @RestController
 @RequestMapping("/data")
 public class EmployeeController
 {
-    //localhost:8080/data/allemployees
+
+
+    /**
+     * Returns a list of all employees
+     * <br>Example: <a href="http://localhost:8080/data/allemployees">http://localhost:8080/data/allemployees</a>
+     *
+     * @return JSON list of all employees order alphabetically by first name with a status of OK.
+     */
     @GetMapping(value = "/allemployees",
                 produces = {"application/json"})
     public ResponseEntity<?> getAllEmployees()
@@ -23,7 +33,13 @@ public class EmployeeController
     }
 
 
-    // localhost:8080/data/employee/2
+    /**
+     * Returns the information for a given employee
+     * <br>Example: <a href="http://localhost:8080/data/employee/2">http://localhost:8080/data/employee/2</a>
+     *
+     * @param id The employee's id whose information you are seeking
+     * @return JSON object of the employee you seek with a status of OK
+     */
     @GetMapping(value = "/employee/{id}",
                 produces = {"application/json"})
     public ResponseEntity<?> getEmpDetail(
@@ -34,7 +50,13 @@ public class EmployeeController
         return new ResponseEntity<>(rtnEmp, HttpStatus.OK);
     }
 
-    // localhost:8080/data/employees/s
+    /**
+     * Returns a list of employees whose first name starts with the given letter
+     * <br>Example: <a href="http://localhost:8080/data/employees/s">http://localhost:8080/data/employees/s</a>
+     *
+     * @param letter The first letter of the first name of the employees you seek. Case insensitive.
+     * @return JSON list of the employees you seek with a status of OK
+     */
     @GetMapping(value = "/employees/{letter}",
                 produces = {"application/json"})
     public ResponseEntity<?> getEmployees(
@@ -46,6 +68,13 @@ public class EmployeeController
         return new ResponseEntity<>(rtnEmps, HttpStatus.OK);
     }
 
+    /**
+     * Returns a list of employees whose first name starts with the given letter sorted by salary from smallest to largest
+     * <br>Example: <a href="http://localhost:8080/data/sortedemployees/s">http://localhost:8080/data/sortedemployees/s</a>
+     *
+     * @param letter The first letter of the first name of the employees you seek. Case insensitive.
+     * @return JSON list of the employees you seek sorted by salary from smallest to largest with a status of OK
+     */
     // localhost:8080/data/employees/s
     @GetMapping(value = "/sortedemployees/{letter}",
                 produces = {"application/json"})
@@ -56,8 +85,6 @@ public class EmployeeController
         ArrayList<Employee> rtnEmps = WebemployeesApplication.ourEmpList.
                 findEmployees(e -> e.getFname().toUpperCase().charAt(0) == Character.toUpperCase(letter));
         rtnEmps.sort((e1, e2) -> ((int) (e1.getSalary() - e2.getSalary())));
-        return new ResponseEntity<>(rtnEmps.get(0), HttpStatus.OK);
+        return new ResponseEntity<>(rtnEmps, HttpStatus.OK);
     }
-
-
 }
