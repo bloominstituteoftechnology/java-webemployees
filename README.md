@@ -1,21 +1,12 @@
 # Java Web Employees
 
-A student that completes this project shows that they can:
-
-* Use IntelliJ in the following areas: application creation, code entry, and code execution
-* Explain the uses of and differences between Maven, Spring, and Tomcat
-* Build a REST service using Spring Boot
-* Use and implement inversion of control and dependency injection with Spring
-* Implement Beans throughout the Beans’ lifecycle controlling the Beans using annotations
-* Produce a complete application following the Maven Phases
-
 ## Introduction
 
-The purpose of this application is to show how to use Maven, Spring, and Tomcat together to produce a functioning Rest API Backend system. This system does NOT make use of a database, in favor of storing all of its data in an arraylist. The application initializes this arraylist and provides a few endpoints in order to read the data from that list.
+The purpose of this application is to show how to use Maven, Spring, and Tomcat together to produce a functioning Rest API Backend system. This system does NOT make use of a database, in favor of storing all of its data in an ArrayList. The application initializes this ArrayList and provides a few endpoints to read the data from that list.
 
 ## Data Layout
 
-The arraylist contains Employee objects.
+The ArrayList contains Employee objects.
 
 Fields of the employee objects include
 
@@ -29,7 +20,7 @@ Fields of the employee objects include
 
 No relationships exist between employee and other objects.
 
-This application works with employee data that is stored inside an arraylist.
+This application works with employee data that is stored inside an ArrayList.
 
 Using the provided seed data, the given endpoint will produce the stated output. Expand each endpoint to see its correct output.
 
