@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The purpose of this application is to show how to use Maven, Spring, and Tomcat together to produce a functioning Rest API Backend system. This system does NOT make use of a database, in favor of storing all of its data in an ArrayList. The application initializes this ArrayList and provides a few endpoints to read the data from that list.
+The purpose of this application is to show how to use Maven, Spring, and Tomcat together to produce a functioning Rest API Backend system. This system makes use of an H2 database.
 
 ## Data Layout
 
@@ -14,50 +14,33 @@ Fields of the employee objects include
 * Employee first name
 * Employee last name
 * Employee Salary
-* A flag saying whether or not the employee has a 401K Plan
-* Id number of the employee's company
-* Id number of the employee's health plan
 
 No relationships exist between employee and other objects.
-
-This application works with employee data that is stored inside an ArrayList.
 
 Using the provided seed data, the given endpoint will produce the stated output. Expand each endpoint to see its correct output.
 
 <details>
-<summary>http://localhost:2019/data/allemployees</summary>
+<summary>http://localhost:2019/employees/all</summary>
 
 ```JSON
 [
     {
-        "id": 3,
-        "fname": "John",
-        "lname": "Jones ",
-        "salary": 75000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "John Jones "
-    },
-    {
-        "id": 2,
+        "empid": 2,
         "fname": "Sam",
         "lname": "Ford",
-        "salary": 80000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Sam Ford"
+        "salary": 80000.0
     },
     {
-        "id": 1,
+        "empid": 1,
         "fname": "Steve",
         "lname": "Green",
-        "salary": 45000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Steve Green"
+        "salary": 45000.0
+    },
+    {
+        "empid": 3,
+        "fname": "May",
+        "lname": "Jones",
+        "salary": 75000.0
     }
 ]
 ```
@@ -65,47 +48,30 @@ Using the provided seed data, the given endpoint will produce the stated output.
 </details>
 
 <details>
-<summary>http://localhost:2019/data/employee/2</summary>
+<summary>http://localhost:2019/employees/name/S</summary>
 
-```JSON
-{
-    "id": 2,
-    "fname": "Sam",
-    "lname": "Ford",
-    "salary": 80000.0,
-    "has401k": true,
-    "companyID": 1,
-    "healthPlanID": 1,
-    "name": "Sam Ford"
-}
+In the Console:
+
+```TEXT
+Employee{empid=1, fname='Steve', lname='Green', salary=45000.0}
+Employee{empid=2, fname='Sam', lname='Ford', salary=80000.0}
 ```
 
-</details>
-
-<details>
-<summary>http://localhost:2019/data/employees/s</summary>
+In Postman
 
 ```JSON
 [
     {
-        "id": 2,
-        "fname": "Sam",
-        "lname": "Ford",
-        "salary": 80000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Sam Ford"
-    },
-    {
-        "id": 1,
+        "empid": 1,
         "fname": "Steve",
         "lname": "Green",
-        "salary": 45000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Steve Green"
+        "salary": 45000.0
+    },
+    {
+        "empid": 2,
+        "fname": "Sam",
+        "lname": "Ford",
+        "salary": 80000.0
     }
 ]
 ```
@@ -113,49 +79,46 @@ Using the provided seed data, the given endpoint will produce the stated output.
 </details>
 
 <details>
-<summary>http://localhost:2019/data/sortedemployees/s</summary>
+<summary>http://localhost:2019/employees/total</summary>
+
+In the Console:
+
+```TEXT
+Total Salary 200000.0
+```
+
+In Postman
 
 ```JSON
-[
-    {
-        "id": 1,
-        "fname": "Steve",
-        "lname": "Green",
-        "salary": 45000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Steve Green"
-    },
-    {
-        "id": 2,
-        "fname": "Sam",
-        "lname": "Ford",
-        "salary": 80000.0,
-        "has401k": true,
-        "companyID": 1,
-        "healthPlanID": 1,
-        "name": "Sam Ford"
-    }
-]
+Status OK
 ```
 
 </details>
 
 <details>
-<summary>http://localhost:2019/calc/salary/1/0.05</summary>
+<summary>http://localhost:2019/employees/raise/0.05</summary>
 
 ```JSON
-{
-    "id": 1,
-    "fname": "Steve",
-    "lname": "Green",
-    "salary": 47250.0,
-    "has401k": true,
-    "companyID": 1,
-    "healthPlanID": 1,
-    "name": "Steve Green"
-}
+[
+    {
+        "empid": 1,
+        "fname": "Steve",
+        "lname": "Green",
+        "salary": 47250.0
+    },
+    {
+        "empid": 2,
+        "fname": "Sam",
+        "lname": "Ford",
+        "salary": 84000.0
+    },
+    {
+        "empid": 3,
+        "fname": "May",
+        "lname": "Jones",
+        "salary": 78750.0
+    }
+]
 ```
 
 </details>
