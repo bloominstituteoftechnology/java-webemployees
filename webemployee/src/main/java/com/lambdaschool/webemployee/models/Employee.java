@@ -53,6 +53,14 @@ public class Employee
         this.salary = salary;
     }
 
+    public Employee(Employee newEmp)
+    {
+        this.empid = newEmp.empid;
+        this.fname = newEmp.fname;
+        this.lname = newEmp.lname;
+        this.salary = newEmp.salary;
+    }
+
     /**
      * The default constructor is required by Spring Data JPA
      */
