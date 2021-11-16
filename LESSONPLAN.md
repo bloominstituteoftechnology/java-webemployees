@@ -30,7 +30,7 @@ Develop a REST API application using Java Spring.
 
 * Inside of IntelliJ, run the final version of the application.
 * Inside of Postman, Surf to each endpoint and show the output.
-  * [Predicted Output](https://github.com/LambdaSchool/java-webemployees)
+  * [Predicted Output](https://github.com/BloomInstituteOfTechnology/java-webemployees)
   * http://localhost:2019/data/allemployees
   * http://localhost:2019/data/employee/2
   * http://localhost:2019/data/employees/s
